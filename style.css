@@ -61,12 +61,12 @@ div.vg-tooltip-element {
     margin-bottom: 10px;
 }
 
-div.st-emotion-cache-1xw8zd0 {
+div.css-1xw8zd0 {
     /* width: 1000px; */
     border: transparent;
    
 }
-div.st-emotion-cache-1wmy9hl{
+div.css-1wmy9hl{
     width: 500px;
     height: auto;
     position: relative;
@@ -78,7 +78,7 @@ div.st-emotion-cache-1wmy9hl{
     margin: 0 auto; /* Centers the element horizontally */
 }
 
-div.st-emotion-cache-1kyxreq{
+div.css-1kyxreq{
 
         display: flex;
         flex-wrap: wrap;
@@ -88,7 +88,7 @@ div.st-emotion-cache-1kyxreq{
         margin: 0 auto; /* Centers the element within its container */
     }
     
-  div.st-emotion-cache-1cunkzb{
+  div.css-1cunkzb{
     width: 600px;
     height: auto;
     position: relative;
@@ -99,6 +99,6 @@ div.st-emotion-cache-1kyxreq{
     align-items: center;
     margin: 0 auto; /* Centers the element horizontally */
 }
-div.st-emotion-cache-1th2vhe{
+div.css-1th2vhe{
     display: none;
 }
