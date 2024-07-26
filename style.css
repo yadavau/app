@@ -87,14 +87,14 @@ div.css-1kyxreq{
         align-items: center; /* Centers items vertically */
         margin: 0 auto; /* Centers the element within its container */
     }
-div.css-1cunkzb{
+css-1bok14q{
 /*     border: transparent; */
     width: 600px;
-    height: auto;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+/*     height: auto; */
+/*     position: relative; */
+/*     display: flex; */
+/*     flex-direction: column; */
+/*     gap: 1rem; */
     justify-content: center; /* Centers items horizontally */
     align-items: center;
     margin: 0 auto; /* Centers the element horizontally */
