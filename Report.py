@@ -10,8 +10,49 @@ from io import BytesIO
 import requests
 from streamlit_option_menu import option_menu
 
+# Set page configuration at the start
+st.set_page_config(page_title="Dashboard", page_icon="🌍", layout="wide")
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
+
+@st.cache_data  # Updated from st.experimental_memo
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+
+img = get_img_as_base64("image.jpg")
+
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
+background-size: 180%;
+background-position: top left;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+
+[data-testid="stSidebar"] > div:first-child {{
+background-image: url("data:image/png;base64,{img}");
+background-position: center; 
+background-repeat: no-repeat;
+background-attachment: fixed;
+}}
+
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+
+[data-testid="stToolbar"] {{
+right: 2rem;
+}}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # MongoDB connection
 try:
@@ -20,8 +61,6 @@ try:
     logging.info("Connected to MongoDB successfully.")
 except Exception as e:
     logging.error(f"Error connecting to MongoDB: {e}")
-
-st.set_page_config(page_title="Dashboard", page_icon="🌍", layout="wide")
 
 
 def project_view():
@@ -429,6 +468,9 @@ def project_view():
                                     "Project data has been successfully updated.")
                                 logging.info(
                                     "Project data has been successfully updated.")
+                                
+                                # Update selected_project to reflect changes
+                                selected_project = project_name  # Update the selected project
                             except Exception as e:
                                 st.error(
                                     f"An error occurred while updating data: {e}")
@@ -662,6 +704,24 @@ def report_view():
     except Exception as e:
         st.error(f"Error loading report: {e}")
         logging.error(f"Error loading report: {e}")
+        
+        
+def contact_us():
+    st.header(":mailbox: Get In Touch With Me!")
+
+    contact_form = """
+    <form action="https://formsubmit.co/akash.yadav@urbs.systems" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message here"></textarea>
+        <button type="submit">Send</button>
+    </form>
+    """
+
+    st.markdown(contact_form, unsafe_allow_html=True)
+
+   
 
 
 def image_to_base64(image):
@@ -677,8 +737,8 @@ def sideBar():
                  width=350)  # Update the path to your logo
         selected = option_menu(
             menu_title="Main Menu",  # Added menu title
-            options=["Report View", "Project View", "New Project"],
-            icons=["speedometer2", "file-earmark-text", "plus"],
+            options=["Report View", "Project View", "New Project", "Contact Us"],
+            icons=["speedometer2", "file-earmark-text", "plus", "envelope", "envelope-fill"],
             menu_icon="cast",
             default_index=0
         )
@@ -703,6 +763,8 @@ def sideBar():
         add_project()
     elif selected == "Report View":
         report_view()
+    elif selected == "Contact Us":
+        contact_us()
     st.sidebar.markdown('<div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">'
                         '<form method="get" action="https://urbs.systems/">'
                         '<button type="submit" style="background-color: transparent; border-color: black; cursor: pointer;font-size: larger;">'
