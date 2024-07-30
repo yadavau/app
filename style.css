@@ -19,7 +19,8 @@ label.css-mkogse.e16fv1kl2 {
 
 /* Adjust Metric Card */
 .metric-card {
-    border: 1px solid #CCCCCC;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 3px solid #000000; /* Thicker black border */
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
