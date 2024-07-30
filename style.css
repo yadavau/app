@@ -141,3 +141,6 @@ input[type=text], input[type=email], textarea {
   button[type=submit]:hover {
     background-color: #45a049;
   }
+div.css-1xy3pbc {
+    display: none;
+}
