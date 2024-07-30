@@ -89,33 +89,26 @@ def project_view():
         try:
             project = collection.find_one({"project_name": selected_project})
             if project:
-
                 # Create containers for the cards
                 with st.container():
                     st.markdown(
                         f"""
-                        <div class="bold-block-container">
-                            Project Name: {project.get("project_name", "N/A")}
+                        <div class="magic-card" style="border: 2px solid black; padding: 10px; margin: 10px;">
+                            <h2 style='text-align: center; color: red;'>{project.get("project_name", "N/A")}</h2>
+                            <h3 style='text-align: center;'>Total Area: {project.get("total_area", "N/A")} {project.get("area_unit", "N/A")}</h3>
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
 
                 with st.container():
-                    total_area = project.get("total_area", "N/A")
-                    area_unit = project.get("area_unit", "N/A")
-                    electricity_consumption = project.get(
-                        "electricity_consumption", "N/A")
+                    electricity_consumption = project.get("electricity_consumption", "N/A")
                     gas_consumption = project.get("gas_consumption", "N/A")
-                    stream_energy_consumption = project.get(
-                        "stream_energy_consumption", "N/A")
-                    total_energy_consumption = project.get(
-                        "total_energy_consumption", "N/A")
-                    electricity_energy_cost = project.get(
-                        "electricity_energy_cost", "N/A")
+                    steam_energy_consumption = project.get("steam_energy_consumption", "N/A")
+                    total_energy_consumption = project.get("total_energy_consumption", "N/A")
+                    electricity_energy_cost = project.get("electricity_energy_cost", "N/A")
                     gas_energy_cost = project.get("gas_energy_cost", "N/A")
-                    stream_energy_cost = project.get(
-                        "stream_energy_cost", "N/A")
+                    steam_energy_cost = project.get("steam_energy_cost", "N/A")
                     total_energy_cost = project.get("total_energy_cost", "N/A")
 
                     col1, col2 = st.columns(2)
@@ -123,16 +116,7 @@ def project_view():
                     with col1:
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
-                                <div class="metric-label">Total Area</div>
-                                <div class="metric-count">{total_area} {area_unit}</div>
-                            </div>
-                            """,
-                            unsafe_allow_html=True
-                        )
-                        st.markdown(
-                            f"""
-                            <div class="metric-card bold-block-container">
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                                 <div class="metric-label">Electricity Consumption (kWh)</div>
                                 <div class="metric-count">{electricity_consumption}</div>
                             </div>
@@ -141,7 +125,7 @@ def project_view():
                         )
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                                 <div class="metric-label">Gas Consumption (kWh)</div>
                                 <div class="metric-count">{gas_consumption}</div>
                             </div>
@@ -150,16 +134,16 @@ def project_view():
                         )
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
-                                <div class="metric-label">Stream Energy Consumption (kWh)</div>
-                                <div class="metric-count">{stream_energy_consumption}</div>
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
+                                <div class="metric-label">Steam Energy Consumption (kWh)</div>
+                                <div class="metric-count">{steam_energy_consumption}</div>
                             </div>
                             """,
                             unsafe_allow_html=True
                         )
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                                 <div class="metric-label">Total Energy Consumption (kWh)</div>
                                 <div class="metric-count">{total_energy_consumption}</div>
                             </div>
@@ -170,7 +154,7 @@ def project_view():
                     with col2:
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                                 <div class="metric-label">Electricity Energy Cost</div>
                                 <div class="metric-count">{electricity_energy_cost}</div>
                             </div>
@@ -179,7 +163,7 @@ def project_view():
                         )
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                                 <div class="metric-label">Gas Energy Cost</div>
                                 <div class="metric-count">{gas_energy_cost}</div>
                             </div>
@@ -188,16 +172,16 @@ def project_view():
                         )
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
-                                <div class="metric-label">Stream Energy Cost</div>
-                                <div class="metric-count">{stream_energy_cost}</div>
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
+                                <div class="metric-label">Steam Energy Cost</div>
+                                <div class="metric-count">{steam_energy_cost}</div>
                             </div>
                             """,
                             unsafe_allow_html=True
                         )
                         st.markdown(
                             f"""
-                            <div class="metric-card bold-block-container">
+                            <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                                 <div class="metric-label">Total Energy Cost</div>
                                 <div class="metric-count">{total_energy_cost}</div>
                             </div>
@@ -213,7 +197,7 @@ def project_view():
 
                     st.markdown(
                         f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">EUI (kWh/m²)</div>
                             <div class="metric-count">{eui_kwh_m2}</div>
                         </div>
@@ -222,7 +206,7 @@ def project_view():
                     )
                     st.markdown(
                         f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">EUI (kBtu/ft²)</div>
                             <div class="metric-count">{eui_kbtu_ft2}</div>
                         </div>
@@ -231,7 +215,7 @@ def project_view():
                     )
                     st.markdown(
                         f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Total Carbon Emission (tCO2)</div>
                             <div class="metric-count">{total_carbon_emission}</div>
                         </div>
@@ -258,49 +242,49 @@ def project_view():
 
                     with col1:
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Uvalue</div>
                             <div class="metric-count">{uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">External Wall 1 Uvalue</div>
                             <div class="metric-count">{external_wall1_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">External Wall 2 Uvalue</div>
                             <div class="metric-count">{external_wall2_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Glass Uvalue</div>
                             <div class="metric-count">{glass_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">SHGC</div>
                             <div class="metric-count">{shgc}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Outdoor Air Winter Temperature (°C)</div>
                             <div class="metric-count">{outdoor_air_winter_temp}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">DBT (°C)</div>
                             <div class="metric-count">{dbt}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">WBT (°C)</div>
                             <div class="metric-count">{wbt}</div>
                         </div>
@@ -308,31 +292,31 @@ def project_view():
 
                     with col2:
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">External Wall 3 Uvalue</div>
                             <div class="metric-count">{external_wall3_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">External Wall 4 Uvalue</div>
                             <div class="metric-count">{external_wall4_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Thermal Mass of Building</div>
                             <div class="metric-count">{thermal_mass_building}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Infiltration</div>
                             <div class="metric-count">{infiltration}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
-                        <div class="metric-card bold-block-container">
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Outdoor Air Summer Temperature (°C)</div>
                             <div class="metric-count">{outdoor_air_summer_temp}</div>
                         </div>
@@ -353,14 +337,14 @@ def project_view():
                             project.get("electricity_consumption", 0)), min_value=0.0, format="%.2f")
                         gas_consumption = st.number_input("Gas Consumption (kWh)", value=float(
                             project.get("gas_consumption", 0)), min_value=0.0, format="%.2f")
-                        stream_energy_consumption = st.number_input("Stream Energy Consumption (kWh)", value=float(
-                            project.get("stream_energy_consumption", 0)), min_value=0.0, format="%.2f")
+                        steam_energy_consumption = st.number_input("Steam Energy Consumption (kWh)", value=float(
+                            project.get("steam_energy_consumption", 0)), min_value=0.0, format="%.2f")
                         electricity_energy_cost = st.number_input("Electricity Energy Cost", value=float(
                             project.get("electricity_energy_cost", 0)), min_value=0.0, format="%.2f")
                         gas_energy_cost = st.number_input("Gas Energy Cost", value=float(
                             project.get("gas_energy_cost", 0)), min_value=0.0, format="%.2f")
-                        stream_energy_cost = st.number_input("Stream Energy Cost", value=float(
-                            project.get("stream_energy_cost", 0)), min_value=0.0, format="%.2f")
+                        steam_energy_cost = st.number_input("Steam Energy Cost", value=float(
+                            project.get("steam_energy_cost", 0)), min_value=0.0, format="%.2f")
                         uvalue = st.number_input("Uvalue", value=float(
                             project.get("uvalue", 0)), min_value=0.0, format="%.2f")
                         external_wall1_uvalue = st.number_input("External Wall 1 Uvalue", value=float(
@@ -399,10 +383,10 @@ def project_view():
                                 "area_unit": area_unit,
                                 "electricity_consumption": f"{electricity_consumption:.2f}",
                                 "gas_consumption": f"{gas_consumption:.2f}",
-                                "stream_energy_consumption": f"{stream_energy_consumption:.2f}",
+                                "steam_energy_consumption": f"{steam_energy_consumption:.2f}",
                                 "electricity_energy_cost": f"{electricity_energy_cost:.2f}",
                                 "gas_energy_cost": f"{gas_energy_cost:.2f}",
-                                "stream_energy_cost": f"{stream_energy_cost:.2f}",
+                                "steam_energy_cost": f"{steam_energy_cost:.2f}",
                                 "uvalue": f"{uvalue:.2f}",
                                 "external_wall1_uvalue": f"{external_wall1_uvalue:.2f}",
                                 "external_wall2_uvalue": f"{external_wall2_uvalue:.2f}",
@@ -460,16 +444,16 @@ def add_project():
             "Electricity Consumption (kWh)", min_value=0.0, format="%.2f")
         gas_consumption = st.number_input(
             "Gas Consumption (kWh)", min_value=0.0, format="%.2f")
-        stream_energy_consumption = st.number_input(
-            "Stream Energy Consumption (kWh)", min_value=0.0, format="%.2f")
+        steam_energy_consumption = st.number_input(
+            "Steam Energy Consumption (kWh)", min_value=0.0, format="%.2f")
 
         currency = st.selectbox("Currency", ["$", "₹"])
         electricity_energy_cost = st.number_input(
             f"Electricity Energy Cost ({currency})", min_value=0.0, format="%.2f")
         gas_energy_cost = st.number_input(
             f"Gas Energy Cost ({currency})", min_value=0.0, format="%.2f")
-        stream_energy_cost = st.number_input(
-            f"Stream Energy Cost ({currency})", min_value=0.0, format="%.2f")
+        steam_energy_cost = st.number_input(
+            f"Steam Energy Cost ({currency})", min_value=0.0, format="%.2f")
 
         uvalue = st.number_input("Uvalue", min_value=0.0, format="%.2f")
         external_wall1_uvalue = st.number_input(
@@ -498,9 +482,9 @@ def add_project():
 
         if submit_button:
             total_energy_consumption = electricity_consumption + \
-                gas_consumption + stream_energy_consumption
+                gas_consumption + steam_energy_consumption
             total_energy_cost = (
-                electricity_consumption * electricity_energy_cost) + (gas_consumption * gas_energy_cost) + (stream_energy_consumption * stream_energy_cost)
+                electricity_consumption * electricity_energy_cost) + (gas_consumption * gas_energy_cost) + (steam_energy_consumption * steam_energy_cost)
 
             if total_area == 0:
                 st.error("Total Area cannot be zero.")
@@ -531,13 +515,13 @@ def add_project():
             st.write("Total Area:", total_area, area_unit)
             st.write("Electricity Consumption (kWh):", electricity_consumption)
             st.write("Gas Consumption (kWh):", gas_consumption)
-            st.write("Stream Energy Consumption (kWh):",
-                     stream_energy_consumption)
+            st.write("Steam Energy Consumption (kWh):",
+                     steam_energy_consumption)
             st.write("Total Energy Consumption (kWh):",
                      total_energy_consumption)
             st.write("Electricity Energy Cost:", electricity_energy_cost)
             st.write("Gas Energy Cost:", gas_energy_cost)
-            st.write("Stream Energy Cost:", stream_energy_cost)
+            st.write("Steam Energy Cost:", steam_energy_cost)
             st.write("Total Energy Cost:", total_energy_cost)
             st.write("Uvalue:", uvalue)
             st.write("External Wall 1 Uvalue:", external_wall1_uvalue)
@@ -569,11 +553,11 @@ def add_project():
                 "area_unit": area_unit,
                 "electricity_consumption": f"{electricity_consumption:.2f}",
                 "gas_consumption": f"{gas_consumption:.2f}",
-                "stream_energy_consumption": f"{stream_energy_consumption:.2f}",
+                "steam_energy_consumption": f"{steam_energy_consumption:.2f}",
                 "currency": currency,
                 "electricity_energy_cost": f"{electricity_energy_cost:.2f}",
                 "gas_energy_cost": f"{gas_energy_cost:.2f}",
-                "stream_energy_cost": f"{stream_energy_cost:.2f}",
+                "steam_energy_cost": f"{steam_energy_cost:.2f}",
                 "uvalue": f"{uvalue:.2f}",
                 "external_wall1_uvalue": f"{external_wall1_uvalue:.2f}",
                 "external_wall2_uvalue": f"{external_wall2_uvalue:.2f}",
