@@ -24,11 +24,13 @@ def get_img_as_base64(file):
 
 
 img = get_img_as_base64("image.jpg")
+img2 = get_img_as_base64("photo-1501426026826-31c667bdf23d.jpg")
+
 
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
+background-image: url("data:image/png;base64,{img2}");
 background-size: 300%;
 background-position: top left;
 background-repeat: no-repeat;
@@ -732,6 +734,9 @@ def main() -> object:
         #MainMenu {visibility: hidden;}
         .stDeployButton {display:none;}
         #stDecoration {display:none;}
+        .st-emotion-cache-1xy3pbc {  /* Add this line to hide the element */
+            display: none !important;  /* Ensure it is hidden */
+        }
     </style>
     """, unsafe_allow_html=True)
 
