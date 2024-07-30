@@ -171,6 +171,9 @@ if __name__ == "__main__":
         #MainMenu {visibility: hidden;}
         .stDeployButton {display:none;}
         #stDecoration {display:none;}
+        .st-emotion-cache-1xy3pbc {  /* Add this line to hide the element */
+            display: none !important;  /* Ensure it is hidden */
+        }
     </style>
     """, unsafe_allow_html=True)
     # load Style css
