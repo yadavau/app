@@ -713,12 +713,22 @@ def sideBar():
     elif selected == "Contact Us":
         contact_us()
     st.sidebar.markdown('<div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">'
-                        '<form method="get" action="javascript:void(0);" onsubmit="location.reload();">'
+                        '<form method="get" action="javascript:void(0);" onsubmit="logout();">'
                         '<button type="submit" style="background-color: lightgray; border: 2px solid black; cursor: pointer; font-size: larger; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">'
                         '<span style="font-weight: bold; color: black;">Logout</span>'
                         '</button>'
                         '</form>'
                         '</div>', unsafe_allow_html=True)
+
+    # Add JavaScript function for logout
+    st.markdown("""
+    <script>
+        function logout() {
+            // Implement your logout logic here
+            alert('Logging out...'); // Placeholder for actual logout logic
+        }
+    </script>
+    """, unsafe_allow_html=True)
 
 
 def main() -> object:
