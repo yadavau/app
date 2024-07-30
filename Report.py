@@ -4,6 +4,7 @@ import logging
 import uuid
 import base64
 from io import BytesIO
+import main
 # import onedrivesdk
 # This library is deprecated, consider using an alternative library for working with OneDrive
 # from onedrivesdk.helpers import GetAuthCodeServer
@@ -712,9 +713,9 @@ def sideBar():
     elif selected == "Contact Us":
         contact_us()
     st.sidebar.markdown('<div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%);">'
-                        '<form method="get" action="https://urbs.systems/">'
-                        '<button type="submit" style="background-color: transparent; border-color: black; cursor: pointer;font-size: larger;">'
-                        '<span style="font-weight: bold;">Logout</span>'
+                        '<form method="get" action="javascript:void(0);" onsubmit="location.reload();">'
+                        '<button type="submit" style="background-color: lightgray; border: 2px solid black; cursor: pointer; font-size: larger; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">'
+                        '<span style="font-weight: bold; color: black;">Logout</span>'
                         '</button>'
                         '</form>'
                         '</div>', unsafe_allow_html=True)
