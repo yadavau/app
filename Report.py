@@ -11,7 +11,7 @@ import requests
 from streamlit_option_menu import option_menu
 
 # Set page configuration at the start
-st.set_page_config(page_title="Dashboard", page_icon="🌍", layout="wide")
+# st.set_page_config(page_title="Dashboard", page_icon="🌍", layout="wide")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -241,143 +241,103 @@ def project_view():
 
                 with st.container():
                     uvalue = project.get("uvalue", "N/A")
-                    external_wall1_uvalue = project.get(
-                        "external_wall1_uvalue", "N/A")
-                    external_wall2_uvalue = project.get(
-                        "external_wall2_uvalue", "N/A")
-                    external_wall3_uvalue = project.get(
-                        "external_wall3_uvalue", "N/A")
-                    external_wall4_uvalue = project.get(
-                        "external_wall4_uvalue", "N/A")
+                    external_wall1_uvalue = project.get("external_wall1_uvalue", "N/A")
+                    external_wall2_uvalue = project.get("external_wall2_uvalue", "N/A")
+                    external_wall3_uvalue = project.get("external_wall3_uvalue", "N/A")
+                    external_wall4_uvalue = project.get("external_wall4_uvalue", "N/A")
                     glass_uvalue = project.get("glass_uvalue", "N/A")
                     shgc = project.get("shgc", "N/A")
-                    thermal_mass_building = project.get(
-                        "thermal_mass_building", "N/A")
+                    thermal_mass_building = project.get("thermal_mass_building", "N/A")
                     infiltration = project.get("infiltration", "N/A")
-                    outdoor_air_summer_temp = project.get(
-                        "outdoor_air_summer_temp", "N/A")
-                    outdoor_air_winter_temp = project.get(
-                        "outdoor_air_winter_temp", "N/A")
+                    outdoor_air_summer_temp = project.get("outdoor_air_summer_temp", "N/A")
+                    outdoor_air_winter_temp = project.get("outdoor_air_winter_temp", "N/A")
                     dbt = project.get("dbt", "N/A")
                     wbt = project.get("wbt", "N/A")
 
-                    st.markdown(
-                        f"""
+                    col1, col2 = st.columns(2)  # Create two columns
+
+                    with col1:
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">Uvalue</div>
                             <div class="metric-count">{uvalue}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">External Wall 1 Uvalue</div>
                             <div class="metric-count">{external_wall1_uvalue}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">External Wall 2 Uvalue</div>
                             <div class="metric-count">{external_wall2_uvalue}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
-                        <div class="metric-card bold-block-container">
-                            <div class="metric-label">External Wall 3 Uvalue</div>
-                            <div class="metric-count">{external_wall3_uvalue}</div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
-                        <div class="metric-card bold-block-container">
-                            <div class="metric-label">External Wall 4 Uvalue</div>
-                            <div class="metric-count">{external_wall4_uvalue}</div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">Glass Uvalue</div>
                             <div class="metric-count">{glass_uvalue}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">SHGC</div>
                             <div class="metric-count">{shgc}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
-                        <div class="metric-card bold-block-container">
-                            <div class="metric-label">Thermal Mass of Building</div>
-                            <div class="metric-count">{thermal_mass_building}</div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
-                        <div class="metric-card bold-block-container">
-                            <div class="metric-label">Infiltration</div>
-                            <div class="metric-count">{infiltration}</div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
-                        <div class="metric-card bold-block-container">
-                            <div class="metric-label">Outdoor Air Summer Temperature (°C)</div>
-                            <div class="metric-count">{outdoor_air_summer_temp}</div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">Outdoor Air Winter Temperature (°C)</div>
                             <div class="metric-count">{outdoor_air_winter_temp}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">DBT (°C)</div>
                             <div class="metric-count">{dbt}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-                    st.markdown(
-                        f"""
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
                         <div class="metric-card bold-block-container">
                             <div class="metric-label">WBT (°C)</div>
                             <div class="metric-count">{wbt}</div>
                         </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+                        """, unsafe_allow_html=True)
+
+                    with col2:
+                        st.markdown(f"""
+                        <div class="metric-card bold-block-container">
+                            <div class="metric-label">External Wall 3 Uvalue</div>
+                            <div class="metric-count">{external_wall3_uvalue}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
+                        <div class="metric-card bold-block-container">
+                            <div class="metric-label">External Wall 4 Uvalue</div>
+                            <div class="metric-count">{external_wall4_uvalue}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
+                        <div class="metric-card bold-block-container">
+                            <div class="metric-label">Thermal Mass of Building</div>
+                            <div class="metric-count">{thermal_mass_building}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
+                        <div class="metric-card bold-block-container">
+                            <div class="metric-label">Infiltration</div>
+                            <div class="metric-count">{infiltration}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
+                        <div class="metric-card bold-block-container">
+                            <div class="metric-label">Outdoor Air Summer Temperature (°C)</div>
+                            <div class="metric-count">{outdoor_air_summer_temp}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    
 
                 # Add Edit button
                 if st.button("Edit"):
