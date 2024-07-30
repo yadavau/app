@@ -4,6 +4,8 @@ from PIL import Image
 import os
 import logging
 import Report
+import base64
+import traceback
 
 # Set page configuration at the top level
 icon = Image.open(r'Picture3.png')
@@ -38,6 +40,22 @@ def main():
             width: 700px;
             margin: auto;
         }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the button */
+        }
+        .hover-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .hover-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
         </style>
         """,
         unsafe_allow_html=True
@@ -54,7 +72,9 @@ def main():
             name = st.text_input("Name")  # Added name input field
             username = st.text_input("Username")
             password = st.text_input("Password", type="password")
-            submit_button = st.form_submit_button(label="Login")
+            st.markdown('<div class="button-container">', unsafe_allow_html=True)  # Center button
+            submit_button = st.form_submit_button(label="Login")  # Removed css_class argument
+            st.markdown('</div>', unsafe_allow_html=True)  # Close button container
         st.markdown('</div>', unsafe_allow_html=True)
 
         # Handle form submission
@@ -76,14 +96,23 @@ def main():
                     "password": password
                 })
                 
-                # Directly call the main function from Report
-                Report.main()
+                try:
+                    Report.main()  # Call to Report
+                except Exception as e:
+                    st.error("Error loading report: " + str(e))
+                    logging.error("Error loading report: " + str(e))
+                    logging.error(traceback.format_exc())
                 st.stop()
             else:
                 st.error("Invalid username or password")
     else:
         st.success(f"Welcome back, {st.session_state.name}!")
-        Report.main()
+        try:
+            Report.main()  # Call to Report
+        except Exception as e:
+            st.error("Error loading report: " + str(e))
+            logging.error("Error loading report: " + str(e))
+            logging.error(traceback.format_exc())
 
 if __name__ == "__main__":
     st.markdown("""
