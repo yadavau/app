@@ -62,7 +62,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def main():
     # Initialize MongoDB client
-    client = MongoClient(r"mongodb://urbsdbsyestem:0yKSD1jkhHHka0b8rW4LfOcz31wLDfNiwRF8VIF82WHYWj3MeEHyqXDqcgWmNWiqBoDAwW85u1ZOACDbE8vu5g==@urbsdbsyestem.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@urbsdbsyestem@")
+    client = MongoClient(r"mongodb://urbsdb:9HLK0LufcJKHLRXgY78mbDEJsyDPzsldQLAniZF9u3uituFG76IOq37kdWueF5KchEH9rwlJ713xACDb4eNM5A==@urbsdb.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@urbsdb@")
     db = client["urbs_project"]
     user_collection = db["login"]
 
