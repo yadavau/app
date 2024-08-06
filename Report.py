@@ -99,6 +99,7 @@ def project_view():
                         <div class="magic-card" style="border: 2px solid black; padding: 10px; margin: 10px;">
                             <h2 style='text-align: center; color: red;'>{project.get("project_name", "N/A")}</h2>
                             <h3 style='text-align: center;'>Total Area: {project.get("total_area", "N/A")} {project.get("area_unit", "N/A")}</h3>
+                            <h4 style='text-align: center;'>Built Year: {project.get("built_year", "N/A")}</h4>  <!-- Added Built Year -->
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -304,6 +305,13 @@ def project_view():
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
+                            <div class="metric-label">Outdoor Air Summer Temperature (°C)</div>
+                            <div class="metric-count">{outdoor_air_summer_temp}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        
+                        st.markdown(f"""
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Outdoor Air Winter Temperature (°C)</div>
                             <div class="metric-count">{outdoor_air_winter_temp}</div>
                         </div>
@@ -331,12 +339,6 @@ def project_view():
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">Infiltration</div>
                             <div class="metric-count">{infiltration}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        st.markdown(f"""
-                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">Outdoor Air Summer Temperature (°C)</div>
-                            <div class="metric-count">{outdoor_air_summer_temp}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         
@@ -394,6 +396,8 @@ def project_view():
                             project.get("roof_uvalue", 0)), min_value=0.0, format="%.2f")
                         window_uvalue = st.number_input("Window U-Value (W/m²K)", value=float(
                             project.get("window_uvalue", 0)), min_value=0.0, format="%.2f")
+                        built_year = st.number_input("Built Year", value=int(
+                            project.get("built_year", 0)), min_value=1900, max_value=2100, format="%d")
 
                         submit_button = st.form_submit_button(
                             label='Update Project')
@@ -425,6 +429,7 @@ def project_view():
                                 "wbt": f"{wbt:.2f}",
                                 "roof_uvalue": f"{roof_uvalue:.2f}",
                                 "window_uvalue": f"{window_uvalue:.2f}",
+                                "built_year": built_year,
                             }
 
                             # Update the database
@@ -504,6 +509,7 @@ def add_project():
         wbt = st.number_input("WBT (°C)", min_value=0.0, format="%.2f")
         roof_uvalue = st.number_input("Roof U-Value (W/m²K)", min_value=0.0, format="%.2f")
         window_uvalue = st.number_input("Window U-Value (W/m²K)", min_value=0.0, format="%.2f")
+        built_year = st.number_input("Built Year", min_value=1900, max_value=2100, format="%d")
 
         submit_button = st.form_submit_button(label='Submit')
 
@@ -570,6 +576,7 @@ def add_project():
             st.write("EUI (kWh/m²):", eui_kwh_m2)
             st.write("EUI (kBtu/ft²):", eui_kbtu_ft2)
             st.write("Total Carbon Emission (tCO2):", total_carbon_emission)
+            st.write("Built Year:", built_year)
 
             # Generate unique IDs
             unique_id = str(uuid.uuid4())
@@ -607,6 +614,7 @@ def add_project():
                 "eui_kwh_m2": f"{eui_kwh_m2:.2f}",
                 "eui_kbtu_ft2": f"{eui_kbtu_ft2:.2f}",
                 "total_carbon_emission": f"{total_carbon_emission:.2f}",
+                "built_year": built_year,
                 "baselineid": shard_key if project_type == 'Existing Case' else None,
                 "proposedid": shard_key if project_type == 'Propose System' else None
             }
