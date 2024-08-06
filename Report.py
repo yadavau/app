@@ -232,8 +232,6 @@ def project_view():
                     external_wall1_uvalue = project.get("external_wall1_uvalue", "N/A")
                     external_wall2_uvalue = project.get("external_wall2_uvalue", "N/A")
                     external_wall3_uvalue = project.get("external_wall3_uvalue", "N/A")
-                    external_wall4_uvalue = project.get("external_wall4_uvalue", "N/A")
-                    glass_uvalue = project.get("glass_uvalue", "N/A")
                     shgc = project.get("shgc", "N/A")
                     thermal_mass_building = project.get("thermal_mass_building", "N/A")
                     infiltration = project.get("infiltration", "N/A")
@@ -249,54 +247,28 @@ def project_view():
                     with col1:
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">U-value (W/m²K)</div>
+                            <div class="metric-label">U-value </div>
                             <div class="metric-count">{uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">External Wall 1 U-value (W/m²K)</div>
+                            <div class="metric-label">Exterior Wall U-Value (Above grade wall)</div>
                             <div class="metric-count">{external_wall1_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">External Wall 2 U-value (W/m²K)</div>
+                            <div class="metric-label">Exterior Wall U-Value (Podium wall)</div>
                             <div class="metric-count">{external_wall2_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">External Wall 3 U-value (W/m²K)</div>
+                            <div class="metric-label">Exterior Wall U-Value (Basement wall)</div>
                             <div class="metric-count">{external_wall3_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
-                        st.markdown(f"""
-                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">External Wall 4 U-value (W/m²K)</div>
-                            <div class="metric-count">{external_wall4_uvalue}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        st.markdown(f"""
-                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">Glass U-value (W/m²K)</div>
-                            <div class="metric-count">{glass_uvalue}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        st.markdown(f"""
-                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">Roof U-Value (W/m²K)</div>
-                            <div class="metric-count">{roof_uvalue}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        st.markdown(f"""
-                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">Window U-Value (W/m²K)</div>
-                            <div class="metric-count">{window_uvalue}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-
-                    with col2:
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
                             <div class="metric-label">SHGC</div>
@@ -305,27 +277,40 @@ def project_view():
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">Outdoor Air Summer Temperature (°C)</div>
-                            <div class="metric-count">{outdoor_air_summer_temp}</div>
-                        </div>
-                        """, unsafe_allow_html=True)
-                        
-                        st.markdown(f"""
-                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">Outdoor Air Winter Temperature (°C)</div>
-                            <div class="metric-count">{outdoor_air_winter_temp}</div>
+                            <div class="metric-label">Roof U-Value </div>
+                            <div class="metric-count">{roof_uvalue}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">DBT (°C)</div>
+                            <div class="metric-label">Window U-Value </div>
+                            <div class="metric-count">{window_uvalue}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+
+                    with col2:
+                        st.markdown(f"""
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
+                            <div class="metric-label">Summer design outdoor DBT (˚F)</div>
                             <div class="metric-count">{dbt}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         st.markdown(f"""
                         <div class="metric-card" style="border: 2px solid black; padding: 10px;">
-                            <div class="metric-label">WBT (°C)</div>
+                            <div class="metric-label">Winter design outdoor DBT (˚F)</div>
                             <div class="metric-count">{wbt}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
+                            <div class="metric-label">Summer design outdoor WBT (˚F)</div>
+                            <div class="metric-count">{outdoor_air_summer_temp}</div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        st.markdown(f"""
+                        <div class="metric-card" style="border: 2px solid black; padding: 10px;">
+                            <div class="metric-label">Winter design outdoor WBT (˚F)</div>
+                            <div class="metric-count">{outdoor_air_winter_temp}</div>
                         </div>
                         """, unsafe_allow_html=True)
 
@@ -366,35 +351,31 @@ def project_view():
                             project.get("gas_energy_cost", 0)), min_value=0.0, format="%.2f")
                         steam_energy_cost = st.number_input("Steam Energy Cost", value=float(
                             project.get("steam_energy_cost", 0)), min_value=0.0, format="%.2f")
-                        uvalue = st.number_input("U-Value (W/m²K)", value=float(
+                        uvalue = st.number_input("U-Value ", value=float(
                             project.get("uvalue", 0)), min_value=0.0, format="%.2f")
-                        external_wall1_uvalue = st.number_input("External Wall 1 U-Value (W/m²K)", value=float(
+                        external_wall1_uvalue = st.number_input("Exterior Wall U-Value (Above grade wall)", value=float(
                             project.get("external_wall1_uvalue", 0)), min_value=0.0, format="%.2f")
-                        external_wall2_uvalue = st.number_input("External Wall 2 U-Value (W/m²K)", value=float(
+                        external_wall2_uvalue = st.number_input("Exterior Wall U-Value (Podium wall)", value=float(
                             project.get("external_wall2_uvalue", 0)), min_value=0.0, format="%.2f")
-                        external_wall3_uvalue = st.number_input("External Wall 3 U-Value (W/m²K)", value=float(
+                        external_wall3_uvalue = st.number_input("Exterior Wall U-Value (Basement wall)", value=float(
                             project.get("external_wall3_uvalue", 0)), min_value=0.0, format="%.2f")
-                        external_wall4_uvalue = st.number_input("External Wall 4 U-Value (W/m²K)", value=float(
-                            project.get("external_wall4_uvalue", 0)), min_value=0.0, format="%.2f")
-                        glass_uvalue = st.number_input("Glass U-Value (W/m²K)", value=float(
-                            project.get("glass_uvalue", 0)), min_value=0.0, format="%.2f")
                         shgc = st.number_input("SHGC", value=float(
                             project.get("shgc", 0)), min_value=0.0, format="%.2f")
                         thermal_mass_building = st.number_input("Thermal Mass of Building", value=float(
                             project.get("thermal_mass_building", 0)), min_value=0.0, format="%.2f")
                         infiltration = st.number_input("Infiltration", value=float(
                             project.get("infiltration", 0)), min_value=0.0, format="%.2f")
-                        outdoor_air_summer_temp = st.number_input("Outdoor Air Summer Temperature (°C)", value=float(
+                        outdoor_air_summer_temp = st.number_input("Summer design outdoor WBT (˚F)", value=float(
                             project.get("outdoor_air_summer_temp", 0)), min_value=0.0, format="%.2f")
-                        outdoor_air_winter_temp = st.number_input("Outdoor Air Winter Temperature (°C)", value=float(
+                        outdoor_air_winter_temp = st.number_input("Winter design outdoor WBT (˚F)", value=float(
                             project.get("outdoor_air_winter_temp", 0)), min_value=0.0, format="%.2f")
-                        dbt = st.number_input("DBT (°C)", value=float(
+                        dbt = st.number_input("Summer design outdoor DBT (˚F)", value=float(
                             project.get("dbt", 0)), min_value=0.0, format="%.2f")
-                        wbt = st.number_input("WBT (°C)", value=float(
+                        wbt = st.number_input("Winter design outdoor DBT (˚F)", value=float(
                             project.get("wbt", 0)), min_value=0.0, format="%.2f")
-                        roof_uvalue = st.number_input("Roof U-Value (W/m²K)", value=float(
+                        roof_uvalue = st.number_input("Roof U-Value ", value=float(
                             project.get("roof_uvalue", 0)), min_value=0.0, format="%.2f")
-                        window_uvalue = st.number_input("Window U-Value (W/m²K)", value=float(
+                        window_uvalue = st.number_input("Window U-Value ", value=float(
                             project.get("window_uvalue", 0)), min_value=0.0, format="%.2f")
                         built_year = st.number_input("Built Year", value=int(
                             project.get("built_year", 0)), min_value=1900, max_value=2100, format="%d")
@@ -418,8 +399,6 @@ def project_view():
                                 "external_wall1_uvalue": f"{external_wall1_uvalue:.2f}",
                                 "external_wall2_uvalue": f"{external_wall2_uvalue:.2f}",
                                 "external_wall3_uvalue": f"{external_wall3_uvalue:.2f}",
-                                "external_wall4_uvalue": f"{external_wall4_uvalue:.2f}",
-                                "glass_uvalue": f"{glass_uvalue:.2f}",
                                 "shgc": f"{shgc:.2f}",
                                 "thermal_mass_building": f"{thermal_mass_building:.2f}",
                                 "infiltration": f"{infiltration:.2f}",
@@ -485,30 +464,26 @@ def add_project():
         steam_energy_cost = st.number_input(
             f"Steam Energy Cost ({currency})", min_value=0.0, format="%.2f")
 
-        uvalue = st.number_input("U-Value (W/m²K)", min_value=0.0, format="%.2f")
+        uvalue = st.number_input("U-Value ", min_value=0.0, format="%.2f")
         external_wall1_uvalue = st.number_input(
-            "External Wall 1 U-Value (W/m²K)", min_value=0.0, format="%.2f")
+            "Exterior Wall U-Value (Above grade wall)", min_value=0.0, format="%.2f")
         external_wall2_uvalue = st.number_input(
-            "External Wall 2 U-Value (W/m²K)", min_value=0.0, format="%.2f")
+            "Exterior Wall U-Value (Podium wall)", min_value=0.0, format="%.2f")
         external_wall3_uvalue = st.number_input(
-            "External Wall 3 U-Value (W/m²K)", min_value=0.0, format="%.2f")
-        external_wall4_uvalue = st.number_input(
-            "External Wall 4 U-Value (W/m²K)", min_value=0.0, format="%.2f")
-        glass_uvalue = st.number_input(
-            "Glass U-Value (W/m²K)", min_value=0.0, format="%.2f")
+            "Exterior Wall U-Value (Basement wall)", min_value=0.0, format="%.2f")
         shgc = st.number_input("SHGC", min_value=0.0, format="%.2f")
         thermal_mass_building = st.number_input(
             "Thermal Mass of Building", min_value=0.0, format="%.2f")
         infiltration = st.number_input(
             "Infiltration", min_value=0.0, format="%.2f")
         outdoor_air_summer_temp = st.number_input(
-            "Outdoor Air Summer Temperature (°C)", min_value=0.0, format="%.2f")
+            "Summer design outdoor WBT (˚F)", min_value=0.0, format="%.2f")
         outdoor_air_winter_temp = st.number_input(
-            "Outdoor Air Winter Temperature (°C)", min_value=0.0, format="%.2f")
-        dbt = st.number_input("DBT (°C)", min_value=0.0, format="%.2f")
-        wbt = st.number_input("WBT (°C)", min_value=0.0, format="%.2f")
-        roof_uvalue = st.number_input("Roof U-Value (W/m²K)", min_value=0.0, format="%.2f")
-        window_uvalue = st.number_input("Window U-Value (W/m²K)", min_value=0.0, format="%.2f")
+            "Winter design outdoor WBT (˚F)", min_value=0.0, format="%.2f")
+        dbt = st.number_input("Summer design outdoor DBT (˚F)", min_value=0.0, format="%.2f")
+        wbt = st.number_input("Winter design outdoor DBT (˚F)", min_value=0.0, format="%.2f")
+        roof_uvalue = st.number_input("Roof U-Value ", min_value=0.0, format="%.2f")
+        window_uvalue = st.number_input("Window U-Value ", min_value=0.0, format="%.2f")
         built_year = st.number_input("Built Year", min_value=1900, max_value=2100, format="%d")
 
         submit_button = st.form_submit_button(label='Submit')
@@ -556,23 +531,21 @@ def add_project():
             st.write("Gas Energy Cost:", gas_energy_cost)
             st.write("Steam Energy Cost:", steam_energy_cost)
             st.write("Total Energy Cost:", total_energy_cost)
-            st.write("Uvalue (W/m²K):", uvalue)
-            st.write("External Wall 1 U-Value (W/m²K):", external_wall1_uvalue)
-            st.write("External Wall 2 U-Value (W/m²K):", external_wall2_uvalue)
-            st.write("External Wall 3 U-Value (W/m²K):", external_wall3_uvalue)
-            st.write("External Wall 4 U-Value (W/m²K):", external_wall4_uvalue)
-            st.write("Glass U-Value (W/m²K):", glass_uvalue)
+            st.write("Uvalue :", uvalue)
+            st.write("Exterior Wall U-Value (Above grade wall):", external_wall1_uvalue)
+            st.write("Exterior Wall U-Value (Podium wall):", external_wall2_uvalue)
+            st.write("Exterior Wall U-Value (Basement wall):", external_wall3_uvalue)
             st.write("SHGC:", shgc)
             st.write("Thermal Mass of Building:", thermal_mass_building)
             st.write("Infiltration:", infiltration)
-            st.write("Outdoor Air Summer Temperature (°C):",
+            st.write("Summer design outdoor WBT (˚F):",
                      outdoor_air_summer_temp)
-            st.write("Outdoor Air Winter Temperature (°C):",
+            st.write("Winter design outdoor WBT (˚F):",
                      outdoor_air_winter_temp)
-            st.write("DBT (°C):", dbt)
-            st.write("WBT (°C):", wbt)
-            st.write("Roof U-Value (W/m²K):", roof_uvalue)
-            st.write("Window U-Value (W/m²K):", window_uvalue)
+            st.write("Summer design outdoor DBT (˚F):", dbt)
+            st.write("Winter design outdoor DBT (˚F):", wbt)
+            st.write("Roof U-Value :", roof_uvalue)
+            st.write("Window U-Value :", window_uvalue)
             st.write("EUI (kWh/m²):", eui_kwh_m2)
             st.write("EUI (kBtu/ft²):", eui_kbtu_ft2)
             st.write("Total Carbon Emission (tCO2):", total_carbon_emission)
@@ -598,8 +571,6 @@ def add_project():
                 "external_wall1_uvalue": f"{external_wall1_uvalue:.2f}",
                 "external_wall2_uvalue": f"{external_wall2_uvalue:.2f}",
                 "external_wall3_uvalue": f"{external_wall3_uvalue:.2f}",
-                "external_wall4_uvalue": f"{external_wall4_uvalue:.2f}",
-                "glass_uvalue": f"{glass_uvalue:.2f}",
                 "shgc": f"{shgc:.2f}",
                 "thermal_mass_building": f"{thermal_mass_building:.2f}",
                 "infiltration": f"{infiltration:.2f}",
